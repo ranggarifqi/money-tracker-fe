@@ -50,7 +50,7 @@ export function TransactionForm({
   const updateMut = useUpdateTransaction()
 
   const activeAccounts = useMemo(
-    () => (accounts ?? []).filter((a) => !a.deletedAt),
+    () => (accounts ?? []).filter((a) => !a.deleted_at),
     [accounts],
   )
   const typeCategories = useMemo(

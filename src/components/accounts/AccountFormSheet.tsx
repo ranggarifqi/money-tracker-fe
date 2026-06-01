@@ -70,10 +70,10 @@ function AccountFormBody({
   const [type, setType] = useState<AccountType>(account?.type ?? 'cash')
   const [currency, setCurrency] = useState(account?.currency ?? 'IDR')
   const [initialBalance, setInitialBalance] = useState(
-    String(account?.initialBalance ?? 0),
+    String(account?.initial_balance ?? 0),
   )
   const [treatAsExpense, setTreatAsExpense] = useState(
-    account?.shouldTreatAsExpense ?? false,
+    account?.should_treat_as_expense ?? false,
   )
 
   const pending = createMut.isPending || updateMut.isPending

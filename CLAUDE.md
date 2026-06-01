@@ -49,11 +49,9 @@ src/
 
 ## Key conventions
 
-### API casing — IMPORTANT
-- **Responses use camelCase**: `userID`, `initialBalance`, `shouldTreatAsExpense`, `deletedAt`
-- **Request bodies use snake_case**: `initial_balance`, `treat_as_expense`, `account_id`, `from_amount`
-- Activity/summary response docs also use snake_case: `account_name`, `from_currency`, `cash_flow`
-- `src/lib/types.ts` encodes this split — follow existing patterns when adding new types
+### API casing
+- **Everything is snake_case**: both responses (`user_id`, `initial_balance`, `should_treat_as_expense`, `deleted_at`) and request bodies (`initial_balance`, `treat_as_expense`, `account_id`, `from_amount`)
+- `src/lib/types.ts` is the single source of truth — follow existing patterns when adding new types
 
 ### Auth
 - No `/me` endpoint on the backend. Login returns the user once; we cache name/email in `localStorage` (via `auth-storage.ts`) for display. The HttpOnly cookie is the real auth.

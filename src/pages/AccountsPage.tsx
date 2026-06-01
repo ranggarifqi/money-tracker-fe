@@ -28,8 +28,8 @@ export function AccountsPage() {
   const { active, deleted } = useMemo(() => {
     const list = accounts ?? []
     return {
-      active: list.filter((a) => !a.deletedAt),
-      deleted: list.filter((a) => a.deletedAt),
+      active: list.filter((a) => !a.deleted_at),
+      deleted: list.filter((a) => a.deleted_at),
     }
   }, [accounts])
 

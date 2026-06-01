@@ -53,7 +53,7 @@ export function AccountCard({
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2">
           <p className="truncate font-medium">{account.name}</p>
-          {account.shouldTreatAsExpense && (
+          {account.should_treat_as_expense && (
             <Badge variant="secondary" className="shrink-0">
               Locked
             </Badge>

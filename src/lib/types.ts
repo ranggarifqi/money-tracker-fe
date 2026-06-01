@@ -1,5 +1,5 @@
 // Types mirror the backend swagger schemas.
-// NOTE: API responses use camelCase; request bodies use snake_case.
+// Both responses and request bodies use snake_case.
 
 export type AccountType =
   | 'cash'
@@ -17,58 +17,58 @@ export type TransactionType = 'income' | 'expense' | 'transfer'
 
 export interface Account {
   id: number
-  userID: number
+  user_id: number
   name: string
   type: AccountType
   currency: string
-  initialBalance: number
-  shouldTreatAsExpense: boolean
+  initial_balance: number
+  should_treat_as_expense: boolean
   balance: number // present on the list endpoint (accountWithBalance)
-  createdAt: string
-  updatedAt: string
-  deletedAt: string | null
+  created_at: string
+  updated_at: string
+  deleted_at: string | null
 }
 
 export interface Category {
   id: number
-  userID: number | null // null for system categories
+  user_id: number | null // null for system categories
   name: string
   type: CategoryType
   icon: string
-  createdAt: string
-  updatedAt: string
+  created_at: string
+  updated_at: string
 }
 
 export interface Transaction {
   id: number
-  userID: number
-  accountID: number
-  categoryID: number
+  user_id: number
+  account_id: number
+  category_id: number
   type: TransactionType
   amount: number
   currency: string
   date: string
   description: string
   source: string
-  transferPairID: number
-  createdAt: string
-  updatedAt: string
+  transfer_pair_id: number
+  created_at: string
+  updated_at: string
 }
 
 export interface Transfer {
   id: number
-  userID: number
-  fromTransactionID: number
-  toTransactionID: number
-  fromAmount: number
-  fromCurrency: string
-  toAmount: number
-  toCurrency: string
-  exchangeRate: number
+  user_id: number
+  from_transaction_id: number
+  to_transaction_id: number
+  from_amount: number
+  from_currency: string
+  to_amount: number
+  to_currency: string
+  exchange_rate: number
   date: string
   description: string
-  createdAt: string
-  updatedAt: string
+  created_at: string
+  updated_at: string
 }
 
 export interface User {
@@ -123,12 +123,12 @@ export interface Summary {
 }
 
 export interface CategorySummaryRow {
-  CategoryID: number
-  CategoryName: string
-  CategoryIcon: string
-  CategoryType: string
-  TotalAmount: number
-  TransactionCount: number
+  category_id: number
+  category_name: string
+  category_icon: string
+  category_type: string
+  total_amount: number
+  transaction_count: number
 }
 
 export interface CategorySummaryResult {

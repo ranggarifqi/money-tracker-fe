@@ -43,7 +43,7 @@ export function TransferForm({ initial, onSuccess }: TransferFormProps) {
   const updateMut = useUpdateTransfer()
 
   const activeAccounts = useMemo(
-    () => (accounts ?? []).filter((a) => !a.deletedAt),
+    () => (accounts ?? []).filter((a) => !a.deleted_at),
     [accounts],
   )
 

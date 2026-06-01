@@ -94,7 +94,7 @@ function CategoryList({
             {cat.icon || '🏷️'}
           </div>
           <span className="flex-1 font-medium">{cat.name}</span>
-          {cat.userID == null && <Badge variant="outline">System</Badge>}
+          {cat.user_id == null && <Badge variant="outline">System</Badge>}
         </Card>
       ))}
     </div>
