@@ -42,6 +42,7 @@ export default defineConfig(({ mode }) => {
           ],
         },
         workbox: {
+          navigateFallback: '/index.html',
           navigateFallbackDenylist: [/^\/v1\//],
           runtimeCaching: [
             {
