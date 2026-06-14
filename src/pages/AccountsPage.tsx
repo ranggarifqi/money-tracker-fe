@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useNavigate } from 'react-router'
 import { Plus, Wallet } from 'lucide-react'
 
 import { PageLayout } from '@/components/layout/PageLayout'
@@ -17,6 +18,7 @@ import { apiErrorMessage } from '@/lib/api/client'
 import type { Account } from '@/lib/types'
 
 export function AccountsPage() {
+  const navigate = useNavigate()
   const { data: accounts, isLoading } = useAccounts()
   const deleteMut = useDeleteAccount()
   const restoreMut = useRestoreAccount()
@@ -83,10 +85,14 @@ export function AccountsPage() {
       ) : (
         <div className="space-y-5">
           <div className="space-y-2">
+            <p className="px-1 text-xs text-muted-foreground">
+              Tap an account to see its activity.
+            </p>
             {active.map((account) => (
               <AccountCard
                 key={account.id}
                 account={account}
+                onClick={(a) => navigate(`/accounts/${a.id}`)}
                 onEdit={openEdit}
                 onDelete={setDeleting}
               />

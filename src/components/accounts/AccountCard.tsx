@@ -29,6 +29,7 @@ const TYPE_ICON: Record<AccountType, typeof Wallet> = {
 
 interface AccountCardProps {
   account: Account
+  onClick?: (account: Account) => void
   onEdit?: (account: Account) => void
   onDelete?: (account: Account) => void
   onRestore?: (account: Account) => void
@@ -37,6 +38,7 @@ interface AccountCardProps {
 
 export function AccountCard({
   account,
+  onClick,
   onEdit,
   onDelete,
   onRestore,
@@ -44,8 +46,8 @@ export function AccountCard({
 }: AccountCardProps) {
   const Icon = TYPE_ICON[account.type] ?? Wallet
 
-  return (
-    <Card className="flex items-center gap-3 p-3">
+  const body = (
+    <>
       <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-muted">
         <Icon className="size-5 text-muted-foreground" />
       </div>
@@ -63,6 +65,23 @@ export function AccountCard({
           {ACCOUNT_TYPE_LABELS[account.type] ?? account.type} · {account.currency}
         </p>
       </div>
+    </>
+  )
+
+  return (
+    <Card className="flex items-center gap-3 p-3">
+      {onClick ? (
+        <button
+          type="button"
+          onClick={() => onClick(account)}
+          className="flex min-w-0 flex-1 items-center gap-3 text-left"
+          aria-label={`View ${account.name} activity`}
+        >
+          {body}
+        </button>
+      ) : (
+        body
+      )}
 
       {deleted ? (
         <Button
